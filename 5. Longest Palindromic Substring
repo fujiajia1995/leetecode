@@ -1,0 +1,20 @@
+class Solution(object):
+    def longestPalindrome(self, s):
+
+        def make_decesion(str1):
+            for i in range(len(str1) // 2):
+                if str1[i] != str1[-(i + 1)]:
+                    return False
+            return True
+
+        def make_substring(str1, num):
+            substring_list =[]
+            for i in range(len(str1)-num+1):
+                substring_list.append(str1[i:i+num])
+            return  substring_list
+
+        for i in range(len(s),1,-1):
+            for list in make_substring(s, i):
+                if make_decesion(list):
+                    return list
+        return s[0]
