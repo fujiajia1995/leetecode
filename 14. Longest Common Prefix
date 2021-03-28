@@ -1,0 +1,20 @@
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        if strs == []:
+            return ""
+        if strs ==[""]:
+            return ""
+        kekka =[]
+        length = []
+        for i in range(len(strs)):
+            length.append(len(strs[i]))
+        min_length= min(length)
+        for i in range(min_length):
+            for str in strs:
+                if str[i] != strs[0][i]:
+                    if kekka == "":
+                        return [""]
+                    return "".join(kekka)
+            kekka.append(strs[0][i])
+
+        return "".join(kekka)
