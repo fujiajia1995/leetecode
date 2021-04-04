@@ -1,0 +1,21 @@
+class Solution(object):
+    def generateParenthesis(self, n):
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+        kekka = []
+
+        def rec_per(now_state, now_num, pre_num, post_num,):
+            if now_num == n:
+                kekka.append(now_state)
+            else:
+                if pre_num < n and pre_num-post_num > 0:
+                    rec_per(now_state + "(", now_num, pre_num+1, post_num)
+                    rec_per(now_state + ")", now_num+1, pre_num, post_num + 1)
+                if pre_num-post_num > 0 and pre_num >= n:
+                    rec_per(now_state + ")", now_num+1, pre_num, post_num + 1)
+                if pre_num-post_num <= 0 and pre_num < n:
+                    rec_per(now_state + "(", now_num, pre_num + 1, post_num)
+        rec_per("(", 0, 1, 0)
+        return kekka
