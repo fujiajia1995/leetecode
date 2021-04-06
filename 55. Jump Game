@@ -1,0 +1,21 @@
+class Solution(object):
+    def canJump(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        maxposition = []
+        for i,num in enumerate(nums):
+            maxposition.append(nums[i] + i+1)
+        print(maxposition)
+        now_max = maxposition[0]
+        while True:
+
+            if now_max >= len(nums):
+                return True
+            old = now_max
+            now_max = max(maxposition[:now_max])
+            print(now_max)
+            print(old)
+            if old == now_max:
+                return False
